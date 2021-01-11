@@ -5,11 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/bootstrap.css">
     <title>Blog node JS</title>
+    <style>
 
+        .btn-action {
+            width: 200px;
+        }
+
+    </style>
 </head>
 <body>
     {{>_navbar}}
     <div class="container mt-4">
+        {{>_msg}}
         {{{ body }}}
     </div>
     
