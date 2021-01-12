@@ -96,4 +96,22 @@ router.post("/categorias/deletar", (req, res) => {
     });
 });
 
+router.get("/postagens", (req, res) => {
+    res.render("admin/postagens");
+});
+
+router.get("/postagens/add", (req, res) => {
+    Categoria.find().then((categorias) => {
+        res.render("admin/addpostagens", { categorias: categorias.map(categoria => categoria.toJSON()) });
+    }).catch((err) => {
+        req.flash("error_msg, 'Houve um erro ao carregar o formulário");
+        res.redirect("/admin/postagens");
+    });
+
+});
+
+router.post("/postagens/nova", (req, res) => {
+
+});
+
 module.exports = router;
