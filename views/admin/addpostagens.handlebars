@@ -17,7 +17,7 @@
             <label for="slug">Conteúdo: </label>
             <textarea class="form-control" id="conteudo" name="conteudo" rows="5"></textarea>
             <label for="slug">Categoria: </label>
-            <select class="form-control">
+            <select class="form-control" name="categoria">
                 {{#each categorias}}
                     <option value="{{_id}}">{{nome}}</option>
                 {{else}}

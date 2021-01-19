@@ -21,7 +21,7 @@ const Postagem = new Schema({
     categoria: {
         type: Schema.Types.ObjectId,
         ref: "categorias",
-        required: true
+        //required: true
     },
     date: {
         type: Date,
@@ -29,4 +29,4 @@ const Postagem = new Schema({
     }
 });
 
-mongoogle.model("postagens", Postagem);
+mongoose.model("postagens", Postagem);
