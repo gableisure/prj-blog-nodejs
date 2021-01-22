@@ -9,9 +9,9 @@
         <form action="/admin/categorias/edit" method="POST">
             <input type="hidden" name="id" value="{{categoria._id}}">
             <label for="nome">Nome: </label>
-            <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome da categoria" value="{{ categoria.nome }}">
+            <input type="text" class="form-control" id="nome" name="nome" value="{{ categoria.nome }}">
             <label for="slug">Slug: </label>
-            <input type="text" class="form-control" id="slug" name="slug" placeholder="Slug da categoria" value="{{ categoria.slug }}">
+            <input type="text" class="form-control" id="slug" name="slug" value="{{ categoria.slug }}">
             <br>
             <button type="submit" class="btn btn-success">
                 Salvar
