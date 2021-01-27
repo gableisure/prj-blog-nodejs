@@ -7,6 +7,8 @@ const path = require('path');
 const mongoose = require('mongoose');
 const session = require("express-session");
 const flash = require("connect-flash");
+require("./models/Postagem");
+const Postagem = mongoose.model("postagens");
 
 const PORT = 8083;
 
@@ -47,7 +49,33 @@ mongoose.connect("mongodb://localhost/blogapp").then(() => {
 app.use(express.static(path.join(__dirname, "public")));
 
 // Rotas
-app.get('/', (req, res) => res.send("Página principal"));
+app.get('/', (req, res) => {
+    Postagem.find().populate("categoria").sort({ date: "desc" }).then((postagens) => {
+        res.render("index", { postagens: postagens.map(postagem => postagem.toJSON()) });
+    }).catch((err) => {
+        req.flash("error_msg", "Houve um erro interno");
+        res.redirect("/404");
+    });
+});
+
+app.get("/postagem/:slug", (req, res) => {
+    Postagem.findOne({ slug: req.params.slug }).then((postagem) => {
+        if (postagem) {
+            res.render("postagem/index", { postagem: postagem });
+        } else {
+            req.flash("error_msg", "Esta postagem não existe!");
+            res.redirect("/");
+        }
+    }).catch((err) => {
+        req.flash("error_msg", "Houve um erro interno!");
+        res.redirect("/");
+    });
+});
+
+app.get("/404", (req, res) => {
+    res.send("Erro 404!")
+});
+
 app.use('/admin', admin);
 
 // Outros
