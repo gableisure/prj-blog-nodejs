@@ -59,7 +59,7 @@ app.get('/', (req, res) => {
 });
 
 app.get("/postagem/:slug", (req, res) => {
-    Postagem.findOne({ slug: req.params.slug }).then((postagem) => {
+    Postagem.findOne({ slug: req.params.slug }).lean().then((postagem) => {
         if (postagem) {
             res.render("postagem/index", { postagem: postagem });
         } else {
