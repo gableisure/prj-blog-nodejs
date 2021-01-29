@@ -1,0 +1,18 @@
+<h3 class="py-1 title-page">Categorias</h3>
+<div class="row">
+    <div class="col-sm-12 d-flex flex-row flex-wrap">
+        {{#each categorias}}
+            <a href="/categorias/{{slug}}" style="text-decoration: none;">
+                <div class="card card-categorias d-flex mx-2 my-2">
+                    <div class="card-body text-center">
+                        <p>{{ nome }}</p>
+                    </div>
+                </div>
+            </a>
+        {{else}}
+            <h4 class="mt-3 text-light">Nenhuma categoria!</h4>
+        {{/each}}
+    </div>
+</div>
+
+
