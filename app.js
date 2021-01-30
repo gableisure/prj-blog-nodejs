@@ -3,6 +3,7 @@ const handlebars = require('express-handlebars');
 const bodyParser = require('body-parser');
 const app = express();
 const admin = require('./routes/admin');
+const usuario = require('./routes/usuario');
 const path = require('path');
 const mongoose = require('mongoose');
 const session = require("express-session");
@@ -11,6 +12,7 @@ require("./models/Postagem");
 const Postagem = mongoose.model("postagens");
 require("./models/Categoria");
 const Categoria = mongoose.model("categorias");
+
 
 const PORT = 8083;
 
@@ -107,6 +109,7 @@ app.get("/404", (req, res) => {
 });
 
 app.use('/admin', admin);
+app.use('/usuario', usuario);
 
 // Outros
 app.listen(PORT, () => console.log(`Server: Server running on port ${PORT}`));
