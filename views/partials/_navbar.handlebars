@@ -14,9 +14,15 @@
         </li>
       </ul>
     </div>
-    <div class="d-flex btn-navbar">
-        <button class="btn btn-outline-primary mx-1">Entrar</button>
-        <button class="btn btn-outline-primary mx-1">Registrar</button>
-    </div>
+    {{#if user}}
+      <div class="d-flex flex-row-reverse btn-navbar mx-5">
+        <a href="/usuario/logout"><button class="btn btn-outline-primary mx-1">Logout</button></a>
+      </div>
+    {{else}}
+      <div class="d-flex btn-navbar">
+          <a href="/usuario/login"><button class="btn btn-outline-primary mx-1">Entrar</button></a>
+          <a href="/usuario/registro"><button class="btn btn-outline-primary mx-1">Registrar</button></a>
+      </div>
+    {{/if}}
   </div>
 </nav>
